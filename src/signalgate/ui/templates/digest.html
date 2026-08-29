@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <h1 class="text-2xl font-semibold text-slate-100">Digest</h1>
+  {% set rejects = records | selectattr("verdict", "equalto", "REJECT_SPURIOUS") | list %}
+  {% set review = records | selectattr("verdict", "equalto", "NEEDS_REVIEW") | list %}
+  {% set promising = records | selectattr("verdict", "equalto", "PROMISING") | list %}
+  <p class="mt-3 text-lg text-slate-300">
+    <span class="text-emerald-400 font-semibold">{{ records | length }} signals screened.</span>
+    {{ rejects | length }} rejected with receipts.
+    {{ review | length }} needed your hour.
+    {{ promising | length }} promising.
+  </p>
+
+  {% if not records %}
+  <p class="mt-6 text-slate-500 text-sm">No results yet - run <span class="font-mono">make baseline && make agent && make digest</span> or submit a spec from the gate.</p>
+  {% endif %}
+
+  {% if rejects %}
+  <h2 class="mt-8 text-sm font-semibold text-slate-300">Rejected - no researcher time required</h2>
+  <table class="mt-3 w-full text-sm">
+    <thead><tr class="text-left text-xs text-slate-500 border-b border-slate-800">
+      <th class="py-2">Case</th><th>Family</th><th>Reason codes</th></tr></thead>
+    <tbody>
+      {% for r in rejects %}
+      <tr class="border-b border-slate-900">
+        <td class="py-2 font-mono text-xs text-slate-300">{{ r.case_id }}</td>
+        <td class="font-mono text-xs text-slate-400">{{ r.family }}</td>
+        <td class="font-mono text-xs text-rose-300/80">{{ r.reason_codes | join(", ") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  {% if review %}
+  <h2 class="mt-8 text-sm font-semibold text-slate-300">Needs review - start here</h2>
+  <ul class="mt-3 space-y-2 text-sm text-slate-300">
+    {% for r in review %}
+    <li><span class="font-mono text-xs text-slate-400">{{ r.case_id }}</span> ({{ r.family }}) -
+      {{ r.reason_codes | join(", ") or "incomplete evidence" }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if promising %}
+  <h2 class="mt-8 text-sm font-semibold text-slate-300">Promising - with receipts</h2>
+  <ul class="mt-3 space-y-2 text-sm text-emerald-300">
+    {% for r in promising %}
+    <li><span class="font-mono text-xs">{{ r.case_id }}</span> - verification held; promote to paper-trade review.</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endblock %}

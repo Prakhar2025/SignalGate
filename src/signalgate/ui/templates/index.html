@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="grid lg:grid-cols-[1fr_420px] gap-10 items-start">
+  <section>
+    <h1 class="text-3xl font-semibold tracking-tight text-slate-100">
+      Screen every candidate signal.<br>
+      <span class="text-slate-400">Only the ones that deserve an hour reach a researcher.</span>
+    </h1>
+    <p class="mt-4 text-slate-400 max-w-2xl">
+      Paste a signal spec (prose + optional pseudocode + parameters). The investigator
+      extracts claims, runs four statistical probes on synthetic data, and returns a verdict
+      with receipts - in under a minute, with zero keys.
+    </p>
+
+    <form hx-post="/investigate" hx-target="#result" hx-swap="innerHTML" class="mt-8">
+      <textarea name="spec" rows="16" placeholder="name: ...&#10;description: |&#10;  ...&#10;pseudocode: |&#10;  score = rank(...)&#10;params: {...}"
+        class="w-full rounded-xl bg-slate-900 border border-slate-800 focus:border-emerald-500/60 focus:outline-none p-4 font-mono text-sm text-slate-200">{{ example_text }}</textarea>
+      <div class="mt-3 flex items-center gap-3">
+        <button type="submit"
+          class="rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-emerald-400">
+          Investigate
+        </button>
+        <span class="text-xs text-slate-500">lint → agent → probes → verdict · rate limit 30/min</span>
+      </div>
+    </form>
+
+    <div id="result" class="mt-8"></div>
+  </section>
+
+  <aside class="space-y-6">
+    <div class="rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+      <h2 class="text-sm font-semibold text-slate-300">Load an example spec</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        {% for name in examples %}
+        <li><button hx-get="/examples/{{ name }}" hx-target="none"
+              class="text-emerald-400 hover:text-emerald-300 font-mono text-xs"
+              onclick="loadExample('{{ name }}')">{{ name }}.yaml</button></li>
+        {% endfor %}
+        {% if not examples %}<li class="text-slate-500 text-xs">run `make data` to generate examples</li>{% endif %}
+      </ul>
+    </div>
+    <div class="rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+      <h2 class="text-sm font-semibold text-slate-300">The four probes</h2>
+      <ul class="mt-3 space-y-2 text-xs text-slate-400">
+        <li><span class="text-slate-300 font-mono">timestamp_alignment_probe</span> - IC collapse under leak-proof re-execution</li>
+        <li><span class="text-slate-300 font-mono">label_permutation_test</span> - deflated permutation p-value</li>
+        <li><span class="text-slate-300 font-mono">regime_subsample</span> - per-regime IC + stability</li>
+        <li><span class="text-slate-300 font-mono">turnover_and_cost_sanity</span> - miracle detection</li>
+      </ul>
+    </div>
+    <div class="rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+      <h2 class="text-sm font-semibold text-slate-300">Recent runs</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        {% for run in recent %}
+        <li><a href="/runs/{{ run.run_id }}" class="text-slate-300 hover:text-emerald-400 font-mono text-xs">{{ run.run_id }}</a>
+          <span class="text-slate-500">· {{ run.name }}</span></li>
+        {% else %}
+        <li class="text-slate-500 text-xs">no runs yet</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
+<script>
+async function loadExample(name) {
+  const text = await fetch('/examples/' + name + '/raw').then(r => r.text());
+  document.querySelector('textarea[name=spec]').value = text;
+}
+</script>
+{% endblock %}

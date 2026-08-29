@@ -1,0 +1,132 @@
+{
+  "agent": {
+    "cost_usd_mean": 0.0,
+    "est_tokens_mean": 195,
+    "false_reject_rate": 0.0,
+    "false_rejects": 0,
+    "n_cases": 12,
+    "per_stratum": {
+      "F1": {
+        "catch": 1.0,
+        "ci95": [
+          0.342,
+          1.0
+        ],
+        "n": 2
+      },
+      "F2": {
+        "catch": 1.0,
+        "ci95": [
+          0.438,
+          1.0
+        ],
+        "n": 3
+      },
+      "F3": {
+        "catch": 0.5,
+        "ci95": [
+          0.095,
+          0.905
+        ],
+        "n": 2
+      },
+      "F4": {
+        "catch": 1.0,
+        "ci95": [
+          0.342,
+          1.0
+        ],
+        "n": 2
+      },
+      "F5": {
+        "catch": 1.0,
+        "ci95": [
+          0.207,
+          1.0
+        ],
+        "n": 1
+      }
+    },
+    "precision_reject": 1.0,
+    "sound_n": 2,
+    "sound_promising": 2,
+    "spurious_catch_ci95": [
+      0.596,
+      0.982
+    ],
+    "spurious_catch_rate": 0.9
+  },
+  "baseline": {
+    "cost_usd_mean": 0.0,
+    "est_tokens_mean": 0,
+    "false_reject_rate": 0.0,
+    "false_rejects": 0,
+    "n_cases": 12,
+    "per_stratum": {
+      "F1": {
+        "catch": 1.0,
+        "ci95": [
+          0.342,
+          1.0
+        ],
+        "n": 2
+      },
+      "F2": {
+        "catch": 0.0,
+        "ci95": [
+          0.0,
+          0.562
+        ],
+        "n": 3
+      },
+      "F3": {
+        "catch": 1.0,
+        "ci95": [
+          0.342,
+          1.0
+        ],
+        "n": 2
+      },
+      "F4": {
+        "catch": 0.5,
+        "ci95": [
+          0.095,
+          0.905
+        ],
+        "n": 2
+      },
+      "F5": {
+        "catch": 0.0,
+        "ci95": [
+          0.0,
+          0.793
+        ],
+        "n": 1
+      }
+    },
+    "precision_reject": 1.0,
+    "sound_n": 2,
+    "sound_promising": 0,
+    "spurious_catch_ci95": [
+      0.237,
+      0.763
+    ],
+    "spurious_catch_rate": 0.5
+  },
+  "dataset_seed": 20260828,
+  "delta_catch_rate": 0.4,
+  "generator_version": "generator@v1.0.0",
+  "mcnemar": {
+    "agent_only_correct": 5,
+    "baseline_only_correct": 1,
+    "both_correct": 6,
+    "both_wrong": 0,
+    "p_value": 0.220671
+  },
+  "mode": "LOCAL_MOCK",
+  "model_id": "LOCAL_MOCK",
+  "package_version": "0.1.0",
+  "prompt_version": "prompts@v1.0.0",
+  "schema_version": "metrics@1",
+  "split": "holdout"
+}

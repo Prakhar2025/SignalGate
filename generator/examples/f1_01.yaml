@@ -1,0 +1,13 @@
+name: Momentum Ignition
+description: Classic 12-1 cross-sectional momentum with a fast exit. Long the top-ranked names, short
+  the bottom, rebalanced daily over the full cross-section. 21-day holding period, costs modeled at 12
+  bps per side.
+pseudocode: 'mom = pct_change(close, 252) - pct_change(close, 21)
+
+  score = rank(mom + shift(close, -1) / close - 1)'
+params:
+  universe: all
+  horizon: 21
+  costs_bps: 10.0
+  rebalance: weekly
+notes: null

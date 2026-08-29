@@ -1,0 +1,68 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install (lock file, byte-identical)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-lock.txt
+          python -m pip install -e . --no-deps
+          python -m pip install pytest ruff
+      - name: Ruff
+        run: python -m ruff check src generator tests scripts
+      - name: Secret scan (ground rule 08)
+        run: python scripts/secret_scan.py
+      - name: Fast test suite
+        run: python -m pytest
+
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-lock.txt
+          python -m pip install -e . --no-deps
+          python -m pip install pytest ruff
+      - name: Generate dataset
+        run: python -m generator.build --out data
+      - name: Full test suite (includes slow repro tests)
+        run: python -m pytest -m ""
+      - name: Baseline + agent over dev split (LOCAL_MOCK, zero keys)
+        run: |
+          python -m signalgate.eval.run --system both --split dev --out artifacts/ci
+          python -m signalgate.eval.score --baseline artifacts/ci/baseline --agent artifacts/ci/agent --out reports/ci
+      - name: Regression gate (catch-rate floor, false-reject ceiling)
+        run: python -m signalgate.eval.regression --metrics reports/metrics.json
+      - name: Clean-environment smoke - no unhandled exceptions (02 §9)
+        run: python -m signalgate.eval.run --system agent --split dev --limit 4 --out artifacts/ci-smoke
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image (03 §12 acceptance)
+        run: docker build -t signalgate .
+      - name: Container healthz
+        run: |
+          docker run -d --name sg -p 8000:8000 signalgate
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8000/healthz; then exit 0; fi
+            sleep 2
+          done
+          docker logs sg
+          exit 1

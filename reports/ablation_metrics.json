@@ -1,0 +1,234 @@
+{
+  "baseline": {
+    "cost_usd_mean": 0.0,
+    "est_tokens_mean": 0,
+    "false_reject_rate": 0.0,
+    "false_rejects": 0,
+    "n_cases": 48,
+    "per_stratum": {
+      "F1": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F2": {
+        "catch": 0.0,
+        "ci95": [
+          0.0,
+          0.299
+        ],
+        "n": 9
+      },
+      "F3": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F4": {
+        "catch": 0.375,
+        "ci95": [
+          0.137,
+          0.694
+        ],
+        "n": 8
+      },
+      "F5": {
+        "catch": 0.0,
+        "ci95": [
+          0.0,
+          0.354
+        ],
+        "n": 7
+      }
+    },
+    "precision_reject": 1.0,
+    "sound_n": 8,
+    "sound_promising": 0,
+    "spurious_catch_ci95": [
+      0.329,
+      0.625
+    ],
+    "spurious_catch_rate": 0.475,
+    "stage": "static lint"
+  },
+  "iter1": {
+    "cost_usd_mean": 0.0,
+    "est_tokens_mean": 201,
+    "false_reject_rate": 0.875,
+    "false_rejects": 7,
+    "n_cases": 48,
+    "per_stratum": {
+      "F1": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F2": {
+        "catch": 1.0,
+        "ci95": [
+          0.701,
+          1.0
+        ],
+        "n": 9
+      },
+      "F3": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F4": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F5": {
+        "catch": 1.0,
+        "ci95": [
+          0.646,
+          1.0
+        ],
+        "n": 7
+      }
+    },
+    "precision_reject": 0.851,
+    "sound_n": 8,
+    "sound_promising": 1,
+    "spurious_catch_ci95": [
+      0.912,
+      1.0
+    ],
+    "spurious_catch_rate": 1.0,
+    "stage": "bare-prompt agent, no verification tools"
+  },
+  "iter2": {
+    "cost_usd_mean": 0.0,
+    "est_tokens_mean": 201,
+    "false_reject_rate": 0.0,
+    "false_rejects": 0,
+    "n_cases": 48,
+    "per_stratum": {
+      "F1": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F2": {
+        "catch": 1.0,
+        "ci95": [
+          0.701,
+          1.0
+        ],
+        "n": 9
+      },
+      "F3": {
+        "catch": 0.75,
+        "ci95": [
+          0.409,
+          0.929
+        ],
+        "n": 8
+      },
+      "F4": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F5": {
+        "catch": 0.857,
+        "ci95": [
+          0.487,
+          0.974
+        ],
+        "n": 7
+      }
+    },
+    "precision_reject": 1.0,
+    "sound_n": 8,
+    "sound_promising": 5,
+    "spurious_catch_ci95": [
+      0.801,
+      0.974
+    ],
+    "spurious_catch_rate": 0.925,
+    "stage": "lint + tool-agent (4 verification probes)"
+  },
+  "iter3": {
+    "cost_usd_mean": 0.0,
+    "est_tokens_mean": 282,
+    "false_reject_rate": 0.0,
+    "false_rejects": 0,
+    "n_cases": 48,
+    "per_stratum": {
+      "F1": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F2": {
+        "catch": 1.0,
+        "ci95": [
+          0.701,
+          1.0
+        ],
+        "n": 9
+      },
+      "F3": {
+        "catch": 0.75,
+        "ci95": [
+          0.409,
+          0.929
+        ],
+        "n": 8
+      },
+      "F4": {
+        "catch": 1.0,
+        "ci95": [
+          0.676,
+          1.0
+        ],
+        "n": 8
+      },
+      "F5": {
+        "catch": 0.857,
+        "ci95": [
+          0.487,
+          0.974
+        ],
+        "n": 7
+      }
+    },
+    "precision_reject": 1.0,
+    "sound_n": 8,
+    "sound_promising": 5,
+    "spurious_catch_ci95": [
+      0.801,
+      0.974
+    ],
+    "spurious_catch_rate": 0.925,
+    "stage": "second regime-narrative agent"
+  }
+}

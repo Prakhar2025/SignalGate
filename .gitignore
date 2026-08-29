@@ -1,0 +1,33 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# --- Tooling caches ---
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Secrets (ground rule 08: env-only, never committed) ---
+.env
+.env.*
+!.env.example
+
+# --- Generated at runtime (regenerate with `make data` / eval targets) ---
+data/
+artifacts/
+
+# --- Editors / OS ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- Scratch ---
+*.log
+*.tmp

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-semibold text-slate-100">Evidence bundle · {{ r.run_id }}</h1>
+    <div class="flex gap-3 text-sm">
+      <a href="/runs/{{ r.run_id }}/bundle.json" class="text-emerald-400 hover:text-emerald-300">bundle.json</a>
+      <a href="/runs/{{ r.run_id }}/bundle.md" class="text-emerald-400 hover:text-emerald-300">bundle.md</a>
+    </div>
+  </div>
+  <div class="mt-6">{% include "_card.html" %}</div>
+
+  <section class="mt-10 rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-sm font-semibold text-slate-300">Claims extracted</h2>
+    <ul class="mt-3 space-y-2 text-sm text-slate-300">
+      {% for c in r.claims %}
+      <li><span class="text-xs font-mono text-slate-500">[{{ c.kind }}]</span> {{ c.text }}
+        {% if c.evidence_span %}<span class="text-xs text-slate-500"> - “{{ c.evidence_span }}”</span>{% endif %}</li>
+      {% else %}
+      <li class="text-slate-500 text-xs">none</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="mt-6 rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-sm font-semibold text-slate-300">Probe detail</h2>
+    <div class="mt-3 space-y-4 text-xs text-slate-300 font-mono">
+      {% for p in r.probe_results %}
+      <div>
+        <div class="text-slate-400">{{ p.probe }} {% if p.skipped %}<span class="text-amber-400">SKIPPED: {{ p.skip_reason }}</span>{% endif %}</div>
+        <div class="mt-1 text-slate-500">{{ p.metrics }}</div>
+        {% if p.detail %}<div class="mt-1 text-slate-600">{{ p.detail }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="mt-6 rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-sm font-semibold text-slate-300">Trajectory (agent spans)</h2>
+    <p class="text-xs text-slate-500 mt-1">{{ r.spans | length }} spans - instruction → tool response → feedback → checkpoint. Full export: <span class="font-mono">/runs/{{ r.run_id }}/bundle.json</span></p>
+    <div class="mt-3 space-y-1 text-xs font-mono text-slate-400 max-h-64 overflow-auto">
+      {% for s in r.spans %}
+      <div>{{ s.ts }} · {{ s.stage }} · {{ s.event }}</div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}

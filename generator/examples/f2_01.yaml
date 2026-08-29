@@ -1,0 +1,12 @@
+name: Management Tone Confidence
+description: 'Score each name by how strongly management sounds about next quarter: we parse the tone
+  of the quarterly filing and go long the confident names, short the cautious ones. Positions are priced
+  at quarter-end and rebalanced daily. Universe is the full cross-section; 21-day holding period; costs
+  modeled at 10 bps.'
+pseudocode: score = rank(mgmt_tone_quarter)
+params:
+  universe: all
+  horizon: 21
+  costs_bps: 10.0
+  rebalance: weekly
+notes: null

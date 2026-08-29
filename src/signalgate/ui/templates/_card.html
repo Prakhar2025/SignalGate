@@ -1,0 +1,82 @@
+{% if error %}
+<div class="rounded-xl border border-rose-900/60 bg-rose-950/40 p-5">
+  <div class="flex items-center gap-3">
+    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-rose-500/15 text-rose-400 font-bold">!</span>
+    <div>
+      <div class="font-semibold text-rose-300">Spec rejected - schema fence</div>
+      <div class="text-sm text-rose-200/70 font-mono">{{ error[:400] }}</div>
+    </div>
+  </div>
+</div>
+{% elif r %}
+{% set vcolors = {"REJECT_SPURIOUS": "rose", "PROMISING": "emerald", "NEEDS_REVIEW": "amber"} %}
+{% set vc = vcolors[r.verdict.value] %}
+<div class="rounded-xl border border-slate-800 bg-slate-900/70 overflow-hidden">
+  {% if r.degraded %}
+  <div class="bg-amber-950/60 border-b border-amber-900/50 px-5 py-2 text-sm text-amber-300">
+    DEGRADED - verification incomplete (model unavailable or spend breaker). Treat as unverified.
+  </div>
+  {% endif %}
+  <div class="p-6">
+    <div class="flex items-start justify-between gap-4 flex-wrap">
+      <div>
+        <div class="text-xs uppercase tracking-wider text-slate-500">Verdict card · run {{ r.run_id }}</div>
+        <h2 class="mt-1 text-2xl font-semibold text-slate-100">{{ r.spec.name }}</h2>
+      </div>
+      <span class="rounded-lg bg-{{ vc }}-500/15 px-4 py-2 text-{{ vc }}-300 font-bold text-lg border border-{{ vc }}-900/60">
+        {{ r.verdict.value.replace('_', ' ') }}
+      </span>
+    </div>
+
+    <div class="mt-4 flex flex-wrap gap-2">
+      {% for c in r.reason_codes %}
+      <span class="text-xs px-2 py-1 rounded-md bg-slate-800 border border-slate-700 text-slate-300 font-mono">{{ c.value }}</span>
+      {% endfor %}
+      <span class="text-xs px-2 py-1 rounded-md bg-slate-800 border border-slate-700 text-slate-400">confidence: {{ r.confidence.value }}</span>
+    </div>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-sm font-semibold text-slate-300">What we probed</h3>
+        <ul class="mt-2 space-y-2 text-xs text-slate-400">
+          {% for p in r.probe_results %}
+          <li class="font-mono">
+            {% if p.skipped %}
+            <span class="text-amber-400">{{ p.probe }}</span> - skipped ({{ p.skip_reason }})
+            {% else %}
+            <span class="text-emerald-400">{{ p.probe }}</span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        <h3 class="mt-5 text-sm font-semibold text-slate-300">Findings</h3>
+        <ul class="mt-2 space-y-3 text-sm text-slate-300">
+          {% for e in r.findings %}
+          <li class="border-l-2 border-slate-700 pl-3">
+            <span class="text-xs text-slate-500 font-mono">{{ e.probe }}</span><br>{{ e.statement }}
+          </li>
+          {% else %}
+          <li class="text-slate-500 text-xs">no numeric findings - see reason codes</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-slate-300">Why this verdict</h3>
+        <p class="mt-2 text-sm text-slate-300 leading-relaxed">{{ r.narrative }}</p>
+        <div class="mt-5 rounded-lg bg-slate-800/60 border border-slate-700 p-4">
+          <div class="text-xs uppercase tracking-wider text-slate-500">Recommended action</div>
+          <div class="mt-1 font-semibold text-slate-200 font-mono text-sm">{{ r.recommended_action.value.replace('_', ' ') }}</div>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-4 text-xs text-slate-500">
+          <span>cost ${{ '%.4f'|format(r.cost_usd) }}</span>
+          <span>{{ r.elapsed_ms }} ms</span>
+          <span>{{ r.mode }}</span>
+        </div>
+        <a href="/runs/{{ r.run_id }}" class="mt-4 inline-block text-sm text-emerald-400 hover:text-emerald-300">
+          Open full evidence bundle →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

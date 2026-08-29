@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SignalGate - research-integrity gate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <style>
+    .htmx-request { opacity: .6; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen antialiased">
+  <header class="border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400 font-bold">SG</span>
+        <span class="text-lg font-semibold tracking-tight">SignalGate</span>
+        <span class="text-xs px-2 py-0.5 rounded-full border border-slate-700 text-slate-400">{{ mode | upper }}</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm text-slate-400">
+        <a href="/" class="hover:text-slate-200">Gate</a>
+        <a href="/digest" class="hover:text-slate-200">Digest</a>
+        <a href="/docs" class="hover:text-slate-200">API</a>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="border-t border-slate-800 mt-16">
+    <div class="max-w-6xl mx-auto px-6 py-6 text-xs text-slate-500 flex flex-col sm:flex-row gap-2 justify-between">
+      <span>Verdicts are advisory - the researcher decides. SignalGate recommends, never trades.</span>
+      <span>100% synthetic data · zero keys in LOCAL_MOCK · evidence bundles for every run</span>
+    </div>
+  </footer>
+</body>
+</html>

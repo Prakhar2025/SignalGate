@@ -1,0 +1,11 @@
+name: Grid-Selected Participation
+description: 'Participation factor: names with elevated cumulative volume keep outperforming. We screened
+  a grid of 40 lookback windows and kept the best performer. Daily rebalance, 10-day holding period, 10
+  bps costs.'
+pseudocode: score = rank(ts_sum(volume, 170))
+params:
+  universe: all
+  horizon: 21
+  costs_bps: 10.0
+  rebalance: weekly
+notes: null
