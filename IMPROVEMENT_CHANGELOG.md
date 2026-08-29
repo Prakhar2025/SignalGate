@@ -32,7 +32,7 @@ with `make ablation`.
 | Human time per task | 60-90 min manual | ~3 min evidence review | -95% |
 | Cost per task | $0 | $0.00 mock / ≤ $0.05 live (breaker-capped) | disclosed |
 
-McNemar paired test (same 48 cases): agent-only correct 19, baseline-only 0 →
+McNemar paired test (same 48 cases): agent-only correct 20, baseline-only 2 →
 p = 0.00029. Wilson 95% CIs on all proportions; per-stratum breakdown in
 [reports/comparison.md](reports/comparison.md).
 

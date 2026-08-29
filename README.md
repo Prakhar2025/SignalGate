@@ -57,7 +57,7 @@ Verdicts are advisory. The researcher decides. No execution capability exists an
 | Human time per task | 60-90 min manual | ~3 min evidence review | -95% |
 | Cost per task | $0 | $0.00 mock / ≤$0.05 live (measured spend, breaker-capped) | disclosed |
 
-McNemar paired test on the dev split: agent-only correct 19, baseline-only correct 0 - p = 0.00029. Every number above regenerates byte-identically from `make data && make baseline && make agent && make eval` (asserted by `python -m signalgate.eval.repro` in CI). Full tables with Wilson CIs: [reports/comparison.md](reports/comparison.md), hold-out in [reports/comparison_holdout.md](reports/comparison_holdout.md), stage-by-stage ablation in [reports/ablation.md](reports/ablation.md).
+McNemar paired test on the dev split: agent-only correct 20, baseline-only correct 2 - p = 0.00029. Every number above regenerates byte-identically from `make data && make baseline && make agent && make eval` (asserted by `python -m signalgate.eval.repro` in CI). Full tables with Wilson CIs: [reports/comparison.md](reports/comparison.md), hold-out in [reports/comparison_holdout.md](reports/comparison_holdout.md), stage-by-stage ablation in [reports/ablation.md](reports/ablation.md).
 
 **Improvement changelog (docs/04 §9, actually run)** - baseline lint catch 0.475 with F2 ≈ 0; a bare-prompt agent without verification tools hit catch 1.0 but **falsely rejected 0.875 of sound specs** (hallucinated checks); adding the four probes restored false-reject to 0.0 at catch 0.925 (the main contribution); a second "regime narrative" agent added +40% tokens for no accuracy gain and was removed. Details and receipts: [IMPROVEMENT_CHANGELOG.md](IMPROVEMENT_CHANGELOG.md).
 
