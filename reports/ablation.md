@@ -1,4 +1,4 @@
-# Improvement changelog evidence (docs/07 §9)
+# Improvement changelog evidence (docs/04 §9)
 
 | Stage | Tried & why | Catch rate | False-reject | F2 catch | Est. tokens/case | Decision |
 |---|---|---|---|---|---|---|

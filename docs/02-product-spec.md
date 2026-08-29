@@ -47,7 +47,7 @@ Junior quant researchers and quant PMs at prop shops / hedge funds; risk officer
 | F2 | Static lint baseline (AST/regex rule suite) |
 | F3 | Investigator agent (one LLM) + 4 probe tools, deterministic orchestrator |
 | F4 | Evidence bundles + verdict cards (web + CLI) |
-| F5 | Eval harness: generator, runner, scorers, reports (doc 07) |
+| F5 | Eval harness: generator, runner, scorers, reports (doc 04) |
 | F6 | Web gate UI + CLI + FastAPI JSON API + swagger |
 | F7 | Digest artifact (markdown) |
 

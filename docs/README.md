@@ -13,9 +13,9 @@
 | 1 | [01-vision.md](01-vision.md) | Doctrine, definitions of victory, product ladder, disclosure stance |
 | 2 | [02-product-spec.md](02-product-spec.md) | Product definition, journeys, feature set v1, acceptance criteria |
 | 3 | [03-architecture.md](03-architecture.md) | Stack, C4 views, orchestrator law, probe contracts, degradation matrix, compliance map |
-| 4 | [07-evaluation.md](07-evaluation.md) | Dataset design, metrics, statistical honesty, regression gates, failure taxonomy, changelog protocol |
-| 5 | [10-reproduction.md](10-reproduction.md) | Clean-machine repro script (mirrored at root `REPRODUCTION.md`) |
-| 6 | [12-pitch.md](12-pitch.md) | Video script, shot list, rules register, deliverables checklist |
+| 4 | [04-evaluation.md](04-evaluation.md) | Dataset design, metrics, statistical honesty, regression gates, failure taxonomy, changelog protocol |
+| 5 | [05-reproduction.md](05-reproduction.md) | Clean-machine repro script (mirrored at root `REPRODUCTION.md`) |
+| 6 | [06-pitch.md](06-pitch.md) | Video script, shot list, rules register, deliverables checklist |
 
 ## Repo shape
 

@@ -1,6 +1,6 @@
 # IMPROVEMENT_CHANGELOG - SignalGate v0
 
-Format per docs/07 §9. Every stage below was **actually run** over the full
+Format per docs/04 §9. Every stage below was **actually run** over the full
 48-case dev split in LOCAL_MOCK mode (seed 20260828); the receipts live in
 [reports/ablation.md](reports/ablation.md) and
 [reports/ablation_metrics.json](reports/ablation_metrics.json), regenerable
@@ -10,7 +10,7 @@ with `make ablation`.
 |---|---|
 | 0.1.0 | Initial build: generator, lint baseline, tool-agent, eval harness, reports |
 
-## Stage table (docs/07 §9)
+## Stage table (docs/04 §9)
 
 | Stage | Tried & why | Evidence (measured, dev split) | Decision |
 |---|---|---|---|
@@ -42,7 +42,7 @@ The shipped system's misses are **marginal-signature cases, not crashes**:
 `f3_08` (survivor universe on a momentum combination) is labeled `PROMISING`
 because its backtest genuinely survives point-in-time verification - the
 universe flaw does not inflate that particular signal (a `labeling_dispute`
-in the docs/07 §8 taxonomy); `f3_07`, `f5_04`, `f4_06` land in
+in the docs/04 §8 taxonomy); `f3_07`, `f5_04`, `f4_06` land in
 `NEEDS_REVIEW` where a reviewer must spend the hour (marginal
 `PIT_ONLY_EDGE` deltas, dead bull-only gates, and selection disclosed
 without a candidate count, so deflation cannot fire). Counts, per-miss

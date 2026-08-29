@@ -1,4 +1,4 @@
-"""Ablation runner (docs/07 §9): the pre-planned improvement stages, actually run.
+"""Ablation runner (docs/04 §9): the pre-planned improvement stages, actually run.
 
   baseline   static lint only
   iter1      bare-prompt agent - claims + significance WITHOUT probe verification
@@ -98,7 +98,7 @@ def main() -> int:
         json.dumps(all_metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     lines = [
-        "# Improvement changelog evidence (docs/07 §9)", "",
+        "# Improvement changelog evidence (docs/04 §9)", "",
         "| Stage | Tried & why | Catch rate | False-reject | F2 catch | Est. tokens/case | Decision |",
         "|---|---|---|---|---|---|---|",
     ]

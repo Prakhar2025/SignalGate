@@ -1,4 +1,4 @@
-"""Pydantic schemas - the fence every untrusted spec and every agent output must pass (doc 03 §2)."""
+"""Pydantic schemas - the fence every untrusted spec and every agent output must pass (doc/03 §2)."""
 from __future__ import annotations
 
 from enum import StrEnum

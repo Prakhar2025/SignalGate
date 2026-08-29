@@ -1,4 +1,4 @@
-# SignalGate - canonical command surface (docs/10-reproduction.md)
+# SignalGate - canonical command surface (docs/05-reproduction.md)
 # Windows without make: see README "Windows note" for python -m equivalents.
 PY ?= python3
 
@@ -22,7 +22,7 @@ eval:               ## score both, print comparison table + CIs, run regression 
 	$(PY) -m signalgate.eval.score --baseline artifacts/baseline --agent artifacts/agent --out reports
 	$(PY) -m signalgate.eval.regression --metrics reports/metrics.json
 
-eval-holdout:       ## sealed split - opened once at final gate (docs/07 §2)
+eval-holdout:       ## sealed split - opened once at final gate (docs/04 §2)
 	$(PY) -m signalgate.eval.run --system both --split holdout --out artifacts/holdout
 	$(PY) -m signalgate.eval.score --baseline artifacts/holdout/baseline --agent artifacts/holdout/agent --out reports --suffix holdout
 

@@ -1,7 +1,7 @@
 # REPRODUCTION
 
 Written for a clean machine. No keys required. No data downloads (all
-synthetic). Mirrors [docs/10-reproduction.md](docs/10-reproduction.md) and
+synthetic). Mirrors [docs/05-reproduction.md](docs/05-reproduction.md) and
 carries the measured v0 numbers.
 
 | Field | Value |

@@ -1,4 +1,4 @@
-"""Eval runner (docs/07 §6): drives the orchestrator over a dataset split.
+"""Eval runner (docs/04 §6): drives the orchestrator over a dataset split.
 
     python -m signalgate.eval.run --system both --split dev --out artifacts/agent
 

@@ -56,7 +56,7 @@ flowchart TB
         BUN["Evidence Store<br/>(disk artifacts, hash-named)"]
         BRK["Spend Meter + Breaker"]
     end
-    subgraph Eval["Evaluation harness (doc 07)"]
+    subgraph Eval["Evaluation harness (doc 04)"]
         GEN["generator/"] --> RUN["runner/"]
         RUN --> SCO["scorers/"] --> REP["reports/"]
     end

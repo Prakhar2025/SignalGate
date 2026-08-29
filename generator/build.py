@@ -157,7 +157,7 @@ def _write_dataset_report(reports_dir: Path, panel, manifest: dict,
     """Calibration report - committed, deterministic (rule 09: every claim -> artifact)."""
     reports_dir.mkdir(parents=True, exist_ok=True)
     lines = [
-        "# Dataset report (docs/07 §2)",
+        "# Dataset report (docs/04 §2)",
         "",
         f"Seed `{manifest['seed']}` · generator `{manifest['generator_version']}` · "
         f"{manifest['n_assets']} assets × {manifest['n_days']} days.",

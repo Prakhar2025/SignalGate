@@ -22,7 +22,7 @@ Alt-data fields ship in two variants:
 
 Disclosed limitation: edge magnitudes in this synthetic world are larger
 than real markets. Probe thresholds are calibrated on THIS world and the
-calibration is published with the metrics (docs/07 §5).
+calibration is published with the metrics (docs/04 §5).
 """
 from __future__ import annotations
 

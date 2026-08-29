@@ -1,4 +1,4 @@
-# docs/12-pitch.md
+# docs/06-pitch.md
 
 | Field | Value |
 |---|---|
@@ -49,7 +49,7 @@ About: who/bottleneck/value (02 §3-4), architecture (03), what is measured (07)
 
 ## 6. Deliverables checklist (the PDF's four)
 - [ ] Code + README + IMPROVEMENT_CHANGELOG (07 §9 format, closes with failure mode + hot take)
-- [ ] REPRODUCTION.md (= doc 10)
+- [ ] REPRODUCTION.md (= doc 05)
 - [ ] Video ≤ 5:00 (script §2)
 - [ ] Trajectories: coding-agent traces + runtime agent spans, instruction → tool response → feedback → retry/checkpoint
 

@@ -1,4 +1,4 @@
-"""Case catalog: 60 seeded cases across six strata (docs/07 §2).
+"""Case catalog: 60 seeded cases across six strata (docs/04 §2).
 
 Split: 48 dev / 12 sealed hold-out. Hold-out ids: f1_09, f1_10, f2_10, f2_11,
 f2_12, f3_09, f3_10, f4_09, f4_10, f5_08, s0_09, s0_10.

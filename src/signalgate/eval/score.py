@@ -1,4 +1,4 @@
-"""Scorers (docs/07 §3, §5): catch rates, Wilson CIs, McNemar, comparison table."""
+"""Scorers (docs/04 §3, §5): catch rates, Wilson CIs, McNemar, comparison table."""
 from __future__ import annotations
 
 import json
@@ -64,7 +64,7 @@ def system_metrics(records: list[dict]) -> dict:
         "est_tokens_mean": round(sum(r.get("est_tokens", 0) for r in records) / len(records))
         if records else 0,
         # latency is wall-time and lives in the comparison report only -
-        # metrics.json must stay byte-identical across runs (docs/07 §5)
+        # metrics.json must stay byte-identical across runs (docs/04 §5)
         "n_cases": len(records),
     }
 

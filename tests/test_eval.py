@@ -1,4 +1,4 @@
-"""Eval math + reproducibility (docs/07 §5): Wilson CIs, McNemar, byte-identical reruns."""
+"""Eval math + reproducibility (docs/04 §5): Wilson CIs, McNemar, byte-identical reruns."""
 from __future__ import annotations
 
 import math

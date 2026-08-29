@@ -1,4 +1,4 @@
-"""Regression gate (docs/07 §7): catch-rate floor + false-reject ceiling fail the build."""
+"""Regression gate (docs/04 §7): catch-rate floor + false-reject ceiling fail the build."""
 from __future__ import annotations
 
 import argparse

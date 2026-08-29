@@ -1,4 +1,4 @@
-# Dataset report (docs/07 §2)
+# Dataset report (docs/04 §2)
 
 Seed `20260828` · generator `generator@v1.0.0` · 50 assets × 750 days.
 
