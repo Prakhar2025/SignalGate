@@ -17,9 +17,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from generator.cases import ALL_CASES, spec_dict  # noqa: E402
+
 from signalgate import PROMPT_VERSION, __version__  # noqa: E402
-from signalgate.agent.prompts import (INTERPRET_SYSTEM, PLAN_SYSTEM,  # noqa: E402
-                                      PLAN_USER_TMPL)
+from signalgate.agent.prompts import INTERPRET_SYSTEM, PLAN_SYSTEM, PLAN_USER_TMPL  # noqa: E402
 from signalgate.config import load_settings  # noqa: E402
 from signalgate.orchestrator.pipeline import Orchestrator  # noqa: E402
 from signalgate.orchestrator.spend import SpendMeter  # noqa: E402
@@ -56,7 +56,8 @@ def render(result, label: str) -> str:
     L.append(f"**Outcome: `{result.verdict.value}`** (confidence {result.confidence.value}) - {label}")
     L.append("")
     L.append(f"Mode `{result.mode}` · model `{result.model_id}` · prompt `{result.prompt_version}` "
-             f"· seed {result.seed} · runtime {result.elapsed_ms} ms · cost ${result.cost_usd:.4f}")
+             f"· seed {result.seed} · cost ${result.cost_usd:.4f} "
+             f"(wall-clock runtime excluded to keep regeneration byte-identical)")
     L.append("")
     L.append("## The input the agent received (untrusted spec)")
     L.append("")
@@ -71,7 +72,7 @@ def render(result, label: str) -> str:
             L.append(f"  {line}")
     L.append(f"params: {spec.params.model_dump()}")
     if spec.notes:
-        L.append(f"notes: |")
+        L.append("notes: |")
         for line in spec.notes.splitlines():
             L.append(f"  {line}")
     L.append("```")
@@ -158,8 +159,8 @@ def render(result, label: str) -> str:
     L.append(f"- Reason codes: {', '.join(c.value for c in result.reason_codes) or 'none'}")
     L.append(f"- Recommended action: `{result.recommended_action.value}`")
     L.append("")
-    L.append(f"> Verdicts are advisory. The researcher is the qualified reviewer. "
-             f"SignalGate recommends, never trades.")
+    L.append("> Verdicts are advisory. The researcher is the qualified reviewer. "
+             "SignalGate recommends, never trades.")
     L.append("")
     return "\n".join(L)
 
@@ -211,7 +212,7 @@ def main() -> int:
     chaos_out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     index.append("| [chaos.md](chaos.md) | f2_01 x2 | DEGRADED | model-down and probe-timeout paths, disclosed |")
 
-    (out.parent / "runs" / "INDEX.md").write_text("\n".join(index) + "\n", encoding="utf-8")
+    (out / "INDEX.md").write_text("\n".join(index) + "\n", encoding="utf-8")
     print(f"trajectories -> {out}")
     return 0
 
