@@ -41,8 +41,7 @@ Every investigation also persists the machine-readable form:
 
 ## 2. The coding agents that built the repository
 
-The repository was built with coding agents (ZCode CLI, model GLM-4.6 via
-glm-plan, August 2026 sprint). The honest highlights of those sessions,
+The repository was built with coding agents (ZCode CLI, model GLM 5.3 Flash, August 2026 sprint). The honest highlights of those sessions,
 including the failures that changed the design:
 
 - **Locked docs first.** The six specification documents were written and
