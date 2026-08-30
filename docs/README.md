@@ -4,7 +4,8 @@
 |---|---|
 | Owner | Prakhar Shukla |
 | Status | Build-locked set for micro1 sprint (Aug 28-31, 2026) |
-| Companion docs (repo root) | `README.md` · `IMPROVEMENT_CHANGELOG.md` · `REPRODUCTION.md` |
+| Companion docs (repo root) | `README.md` · `IMPROVEMENT_CHANGELOG.md` · `REPRODUCTION.md` · `SUBMISSION.md` |
+| Assets | `docs/assets/banner.png` (1280x640 social/README) · `docs/assets/article-image.png` (1200x675 article/submission) |
 
 ## Reading order (hand-off sequence for the coding agent)
 
@@ -16,6 +17,7 @@
 | 4 | [04-evaluation.md](04-evaluation.md) | Dataset design, metrics, statistical honesty, regression gates, failure taxonomy, changelog protocol |
 | 5 | [05-reproduction.md](05-reproduction.md) | Clean-machine repro script (mirrored at root `REPRODUCTION.md`) |
 | 6 | [06-pitch.md](06-pitch.md) | Video script, shot list, rules register, deliverables checklist |
+| 7 | [07-article.md](07-article.md) | Long-form write-up: the design bet, the benchmark, the ablation lesson (article image: assets/article-image.png) |
 
 ## Repo shape
 

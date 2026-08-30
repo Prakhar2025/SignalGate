@@ -1,5 +1,9 @@
 # SignalGate
 
+<p align="center">
+  <img src="docs/assets/banner.png" alt="SignalGate: research teams don't lack signals, they lack gates" width="100%">
+</p>
+
 **research teams don't lack signals, they lack gates. SignalGate sells silence for the research pipeline - spurious signals die with receipts; only signals that deserve a researcher's hour reach a human.**
 
 SignalGate is an agentic research-integrity gate: candidate trading signals are investigated like fraud cases - statistical probes as tools, verdicts with receipts, silence unless a signal deserves a researcher's hour.
@@ -122,4 +126,4 @@ Synthetic data only (rule 07) · probes sandboxed, no consequential actions (04)
 
 ## Documentation index
 
-[01-vision](docs/01-vision.md) · [02-product-spec](docs/02-product-spec.md) · [03-architecture](docs/03-architecture.md) · [04-evaluation](docs/04-evaluation.md) · [05-reproduction](docs/05-reproduction.md) · [06-pitch](docs/06-pitch.md)
+[01-vision](docs/01-vision.md) · [02-product-spec](docs/02-product-spec.md) · [03-architecture](docs/03-architecture.md) · [04-evaluation](docs/04-evaluation.md) · [05-reproduction](docs/05-reproduction.md) · [06-pitch](docs/06-pitch.md) · [07-article](docs/07-article.md)

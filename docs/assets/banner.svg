@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#05070a"/>
+  <rect x="0" y="540" width="1280" height="2" fill="#1b232c"/>
+  <rect x="56" y="48" width="44" height="44" rx="10" fill="#0a0e13" stroke="#1b232c" stroke-width="2"/>
+  <text x="78" y="78" font-family="Consolas, monospace" font-size="19" font-weight="700" fill="#34d399" text-anchor="middle">SG</text>
+  <text x="114" y="76" font-family="Segoe UI, Arial" font-size="26" font-weight="700" fill="#e8edf2">SignalGate</text>
+  <text x="56" y="234" font-family="Segoe UI, Arial" font-size="58" font-weight="700" fill="#e8edf2">Research teams</text>
+  <text x="56" y="308" font-family="Segoe UI, Arial" font-size="58" font-weight="700" fill="#e8edf2">don't lack signals.</text>
+  <text x="56" y="382" font-family="Segoe UI, Arial" font-size="58" font-weight="700" fill="#34d399">They lack gates.</text>
+  <text x="56" y="576" font-family="Consolas, monospace" font-size="19" fill="#8b98a5">0.925 catch vs 0.475 baseline · 0.0 false rejects · p = 0.00029 · 100% synthetic, seed 20260828</text>
+</svg>

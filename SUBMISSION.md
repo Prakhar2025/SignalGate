@@ -34,6 +34,10 @@ that proves it.
       env-only credentials (rule 08), and `scripts/routing_ritual.py`
       records honest skips without them.
 
+- [x] Long-form article with the 1200x675 article image:
+      [docs/07-article.md](docs/07-article.md) and
+      [docs/assets/article-image.png](docs/assets/article-image.png)
+
 ### 03 Solution video (up to 5 minutes)
 
 - [x] Script, beat sheet and shot list: [docs/06-pitch.md](docs/06-pitch.md)
