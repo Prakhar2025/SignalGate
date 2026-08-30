@@ -94,6 +94,14 @@ signalgate digest                                 # "48 screened. 37 rejected wi
 
 FastAPI + Jinja2/Tailwind/HTMX (zero node build) + Typer CLI over one deterministic orchestrator: models decide **within** stages, code decides **between** stages; verdicts come from probe numbers and thresholds in `signalgate/orchestrator/thresholds.py`; narrative prose is generated last. Probes run on synthetic data only, in subprocesses with CPU/memory caps and no network. Degradation is tested, not aspirational: model down or spend breaker tripped → lint-only `NEEDS_REVIEW` with a plain `DEGRADED_MODEL` banner; probe timeout → `PROBE_SKIPPED` disclosed; schema fail → reasoned `REJECTED_INVALID`. Full C4 views, probe contracts, and the ground-rule compliance map: [docs/03-architecture.md](docs/03-architecture.md).
 
+## Live demo and deployment
+
+Run it locally (two commands above), or deploy free: backend on Render,
+frontend on Vercel, five minutes, env-only config. Exact steps:
+[DEPLOY.md](DEPLOY.md). The gate page also has a bring-your-own-model panel:
+any OpenAI-compatible endpoint and key pasted by a visitor stays in their
+browser and is used for their request only.
+
 ## Repository map
 
 ```

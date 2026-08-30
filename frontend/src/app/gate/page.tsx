@@ -11,6 +11,18 @@ export default function GatePage() {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<InvestigationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showLive, setShowLive] = useState(false);
+  const [live, setLive] = useState<{ model: string; api_base: string; api_key: string }>(
+    () => {
+      if (typeof window === "undefined") return { model: "", api_base: "", api_key: "" };
+      try {
+        return JSON.parse(localStorage.getItem("signalgate_live") ?? "") as { model: string; api_base: string; api_key: string };
+      } catch {
+        return { model: "", api_base: "", api_key: "" };
+      }
+    }
+  );
+  const liveOn = Boolean(live.model && live.api_base && live.api_key);
 
   useEffect(() => {
     fetch("/api/runs?limit=6")
@@ -37,7 +49,7 @@ export default function GatePage() {
       const res = await fetch("/investigate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ spec_yaml: yaml }),
+        body: JSON.stringify({ spec_yaml: yaml, ...(liveOn ? { live } : {}) }),
       });
       const body = await res.json();
       if (!res.ok) {
@@ -123,6 +135,45 @@ export default function GatePage() {
               <li>f1_01 · syntactic shift(-1)</li>
               <li>f4_01 · best-of-40 p-hack</li>
             </ul>
+          </div>
+
+          <div className="rounded-xl border border-line bg-surface/60 p-5">
+            <button
+              onClick={() => setShowLive(!showLive)}
+              className="flex w-full items-center justify-between text-sm font-semibold"
+            >
+              <span>Bring your own model {liveOn && <span className="ml-2 rounded-full bg-signal/15 px-2 py-0.5 font-mono text-[10px] text-signal">LIVE ON</span>}</span>
+              <span className="text-dim">{showLive ? "-" : "+"}</span>
+            </button>
+            {showLive && (
+              <div className="mt-3 space-y-2">
+                <p className="text-[11px] leading-relaxed text-dim">
+                  Optional. The default LOCAL_MOCK needs no keys and reproduces every
+                  published number. Paste any OpenAI-compatible endpoint to run the
+                  investigator live; the key stays in this browser and is used for
+                  the request only. Live verdicts are clearly badged and the spend
+                  breaker still caps the run.
+                </p>
+                <input value={live.model} onChange={(e) => setLive({ ...live, model: e.target.value })}
+                  placeholder="model id, e.g. openai/gpt-4o-mini"
+                  className="w-full rounded-md border border-line bg-background/70 px-3 py-2 font-mono text-xs outline-none focus:border-signal/50" />
+                <input value={live.api_base} onChange={(e) => setLive({ ...live, api_base: e.target.value })}
+                  placeholder="api base, e.g. https://api.openai.com/v1"
+                  className="w-full rounded-md border border-line bg-background/70 px-3 py-2 font-mono text-xs outline-none focus:border-signal/50" />
+                <input value={live.api_key} onChange={(e) => setLive({ ...live, api_key: e.target.value })}
+                  type="password" placeholder="api key (kept in this browser only)"
+                  className="w-full rounded-md border border-line bg-background/70 px-3 py-2 font-mono text-xs outline-none focus:border-signal/50" />
+                <button
+                  onClick={() => {
+                    localStorage.setItem("signalgate_live", JSON.stringify(live));
+                    if (!liveOn) setShowLive(false);
+                  }}
+                  className="w-full rounded-md border border-signal/40 bg-signal/10 px-3 py-2 font-mono text-xs text-signal hover:bg-signal/20"
+                >
+                  {liveOn ? "Save live config" : "Save and enable live mode"}
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="rounded-xl border border-line bg-surface/60 p-5">

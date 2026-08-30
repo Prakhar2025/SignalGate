@@ -32,30 +32,30 @@ const VERT = /* glsl */ `
 
     // each point lives on its own 14s cycle offset by seed
     float phase = fract(uTime / 14.0 + aSeed);
-    vec3 color = vec3(0.16, 0.55, 0.42);       // idle emerald-gray
-    float glow = 0.55 + 0.45 * sin(uTime * 1.4 + aSeed * 40.0);
-    float size = 3.2 + 1.4 * fract(aSeed * 5.7);
+    vec3 color = vec3(0.09, 0.30, 0.24);       // idle emerald-gray
+    float glow = 0.38 + 0.30 * sin(uTime * 1.1 + aSeed * 40.0);
+    float size = 1.9 + 0.9 * fract(aSeed * 5.7);
 
     // the gate sweep: [0.55, 0.70) flag, [0.70, 0.85) collapse
     float flagged = step(fract(aSeed * 91.7), 0.82);
     float flaring = smoothstep(0.55, 0.60, phase) * (1.0 - smoothstep(0.60, 0.70, phase));
     float collapsing = smoothstep(0.70, 0.82, phase);
-    color = mix(color, vec3(0.98, 0.35, 0.42), flaring * flagged);
-    glow = mix(glow, 1.6, flaring * flagged);
-    size *= 1.0 + 0.9 * flaring * flagged;
+    color = mix(color, vec3(0.62, 0.24, 0.30), flaring * flagged);
+    glow = mix(glow, 0.9, flaring * flagged);
+    size *= 1.0 + 0.5 * flaring * flagged;
     size *= 1.0 - 0.85 * collapsing * flagged;
     glow *= 1.0 - 0.8 * collapsing * flagged;
 
     // survivors past the sweep hold bright
     float held = (1.0 - flagged) * smoothstep(0.70, 0.85, phase);
-    color = mix(color, vec3(0.20, 0.83, 0.60), held);
-    glow = mix(glow, 1.35, held);
+    color = mix(color, vec3(0.13, 0.48, 0.36), held);
+    glow = mix(glow, 0.75, held);
 
     vColor = color;
     vGlow = glow;
 
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
-    gl_PointSize = size * (105.0 / -mv.z);
+    gl_PointSize = size * (52.0 / -mv.z);
     gl_Position = projectionMatrix * mv;
   }
 `;
@@ -69,7 +69,7 @@ const FRAG = /* glsl */ `
     float core = smoothstep(0.5, 0.06, d);
     float halo = smoothstep(0.5, 0.32, d) * 0.35;
     vec3 c = vColor * (core + halo) * vGlow;
-    gl_FragColor = vec4(c, (core + halo) * 0.9);
+    gl_FragColor = vec4(c, (core + halo) * 0.55);
   }
 `;
 

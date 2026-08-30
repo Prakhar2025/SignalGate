@@ -58,8 +58,7 @@ class Orchestrator:
             self.adapter = LocalMockAdapter()
 
     def _api_key(self) -> str:
-        import os
-        return os.getenv("SIGNALGATE_API_KEY", "")
+        return self.settings.api_key
 
     def investigate(self, spec: SignalSpec, case_id: str | None = None,
                     depth: str = "agent", persist: bool = True) -> RunResult:

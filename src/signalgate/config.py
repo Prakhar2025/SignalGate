@@ -18,11 +18,12 @@ class Settings:
     model: str
     api_base: str
     api_key_set: bool
-    spend_cap_usd: float
-    seed: int
-    data_dir: Path
-    artifacts_dir: Path
-    reports_dir: Path
+    api_key: str = ""            # runtime-only; never logged, never persisted
+    spend_cap_usd: float = 2.00
+    seed: int = 20260828
+    data_dir: Path = Path("data")
+    artifacts_dir: Path = Path("artifacts")
+    reports_dir: Path = Path("reports")
 
     @property
     def market_path(self) -> Path:
@@ -43,6 +44,7 @@ def load_settings(repo_root: Path | None = None) -> Settings:
         model=model or "LOCAL_MOCK",
         api_base=api_base,
         api_key_set=bool(api_key),
+        api_key=api_key,
         spend_cap_usd=float(os.getenv("SIGNALGATE_SPEND_CAP_USD", "2.00")),
         seed=int(os.getenv("SIGNALGATE_SEED", "20260828")),
         data_dir=root / "data",

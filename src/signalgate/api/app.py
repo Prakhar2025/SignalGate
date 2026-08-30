@@ -18,7 +18,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 
 from signalgate import __version__
-from signalgate.config import load_settings
+from signalgate.config import Settings, load_settings
 from signalgate.orchestrator.bundle import to_markdown
 from signalgate.orchestrator.pipeline import SpecInvalid, investigate_spec_dict
 
@@ -158,6 +158,7 @@ def create_app(settings=None, rate_limit: int = RATE_LIMIT,
             return JSONResponse({"error": "rate limit: 30 requests/min/IP"},
                                 status_code=429)
         ctype = request.headers.get("content-type", "")
+        live_cfg = None
         try:
             if "form" in ctype:
                 form = await request.form()
@@ -169,10 +170,27 @@ def create_app(settings=None, rate_limit: int = RATE_LIMIT,
                 raw = body.get("spec_yaml", "")
                 spec_dict = body.get("spec", None) or yaml.safe_load(raw)
                 htmx = False
+                lc = body.get("live")
+                if isinstance(lc, dict):
+                    live_cfg = {
+                        k: str(lc.get(k, "") or "").strip()
+                        for k in ("model", "api_base", "api_key")
+                    }
         except yaml.YAMLError as exc:
             return _invalid(request, f"YAML parse error: {exc}", htmx="form" in ctype)
+        call_settings = settings
+        if live_cfg and all(live_cfg.values()):
+            # BYO-model for this request only: key is held in memory for the
+            # duration of the call and never logged, persisted, or bundled.
+            call_settings = Settings(
+                mode="live", effective_mode="live",
+                model=live_cfg["model"], api_base=live_cfg["api_base"],
+                api_key_set=True, api_key=live_cfg["api_key"],
+                spend_cap_usd=settings.spend_cap_usd, seed=settings.seed,
+                data_dir=settings.data_dir, artifacts_dir=settings.artifacts_dir,
+                reports_dir=settings.reports_dir)
         try:
-            result = investigate_spec_dict(spec_dict, settings=settings)
+            result = investigate_spec_dict(spec_dict, settings=call_settings)
         except SpecInvalid as exc:
             return _invalid(request, str(exc), htmx=htmx)
         except Exception as exc:  # never leak a 500 with a stack trace to the gate

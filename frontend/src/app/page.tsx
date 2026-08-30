@@ -71,13 +71,13 @@ export default function Home() {
         <SignalField />
         <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-24 sm:pt-32">
           <div className="max-w-2xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 font-mono text-[11px] text-muted backdrop-blur">
-              <span className="pulse-dot inline-block h-1.5 w-1.5 rounded-full bg-signal" />
-              agentic research-integrity gate · measured, reproducible, zero keys
+            <div className="mb-7 font-mono text-[11px] uppercase tracking-[0.3em] text-muted">
+              <span className="pulse-dot mr-2 inline-block h-1.5 w-1.5 rounded-full bg-signal align-middle" />
+              agentic research-integrity gate
             </div>
-            <h1 className="text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl">
-              Research teams don&apos;t lack signals.
-              <span className="block text-signal text-glow">They lack gates.</span>
+            <h1 className="text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.03em] sm:text-7xl">
+              Research teams<br className="hidden sm:block" /> don&apos;t lack signals.
+              <span className="block text-signal">They lack gates.</span>
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
               LLM idea generators and vendors flood quant pipelines with candidate
@@ -90,7 +90,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="/gate"
-                className="glow-signal rounded-lg bg-signal px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-signal-dim"
+                className="rounded-lg bg-signal px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-signal-dim"
               >
                 Screen a signal
               </Link>

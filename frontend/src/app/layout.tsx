@@ -82,7 +82,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="grain flex min-h-full flex-col">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
