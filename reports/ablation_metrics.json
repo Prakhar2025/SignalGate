@@ -175,7 +175,7 @@
   },
   "iter3": {
     "cost_usd_mean": 0.0,
-    "est_tokens_mean": 282,
+    "est_tokens_mean": 281,
     "false_reject_rate": 0.0,
     "false_rejects": 0,
     "n_cases": 48,

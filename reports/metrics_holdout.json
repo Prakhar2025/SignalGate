@@ -1,7 +1,7 @@
 {
   "agent": {
     "cost_usd_mean": 0.0,
-    "est_tokens_mean": 195,
+    "est_tokens_mean": 194,
     "false_reject_rate": 0.0,
     "false_rejects": 0,
     "n_cases": 12,

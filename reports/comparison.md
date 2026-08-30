@@ -17,4 +17,4 @@ McNemar paired test (same 48 cases): agent-only correct 20, baseline-only correc
 
 Human time: baseline and agent both replace the 60-90 min manual review; the agent's evidence bundle reduces review to ~3 minutes for surviving cases.
 
-This run: latency p50 4679 ms (wall-clock; excluded from metrics.json to keep it byte-identical).
+This run: latency p50 4184 ms (wall-clock; excluded from metrics.json to keep it byte-identical).
