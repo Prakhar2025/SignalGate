@@ -18,6 +18,8 @@ htmlcov/
 .env.*
 !.env.example
 
+DEPLOY_PRIVATE.md
+
 # --- Generated at runtime (regenerate with `make data` / eval targets) ---
 data/
 artifacts/
