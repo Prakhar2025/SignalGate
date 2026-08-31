@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://signalgate.vercel.app"),
   title: "SignalGate - research-integrity gate for candidate trading signals",
   description:
     "Every candidate signal is investigated like a fraud case: statistical probes, verdicts with receipts, silence unless a signal deserves a researcher's hour.",
