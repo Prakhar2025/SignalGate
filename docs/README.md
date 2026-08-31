@@ -5,6 +5,7 @@
 | Owner | Prakhar Shukla |
 | Status | Build-locked set for micro1 sprint (Aug 28-31, 2026) |
 | Companion docs (repo root) | `README.md` · `IMPROVEMENT_CHANGELOG.md` · `REPRODUCTION.md` · `SUBMISSION.md` |
+| Blog | [`blog/engineering-deep-dive.md`](blog/engineering-deep-dive.md) | full engineering deep dive (cover: `assets/article-image.png` 1200x675) |
 | Assets | `docs/assets/banner.png` (1280x640 social/README) · `docs/assets/article-image.png` (1200x675 article/submission) |
 
 ## Reading order (hand-off sequence for the coding agent)

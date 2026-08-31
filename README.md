@@ -126,4 +126,4 @@ Synthetic data only (rule 07) · probes sandboxed, no consequential actions (04)
 
 ## Documentation index
 
-[01-vision](docs/01-vision.md) · [02-product-spec](docs/02-product-spec.md) · [03-architecture](docs/03-architecture.md) · [04-evaluation](docs/04-evaluation.md) · [05-reproduction](docs/05-reproduction.md) · [06-pitch](docs/06-pitch.md) · [07-article](docs/07-article.md)
+[01-vision](docs/01-vision.md) · [02-product-spec](docs/02-product-spec.md) · [03-architecture](docs/03-architecture.md) · [04-evaluation](docs/04-evaluation.md) · [05-reproduction](docs/05-reproduction.md) · [06-pitch](docs/06-pitch.md) · [07-article](docs/07-article.md) · [engineering deep dive](docs/blog/engineering-deep-dive.md)
