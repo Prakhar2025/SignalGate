@@ -24,16 +24,16 @@ export default function GatePage() {
   );
   const liveOn = Boolean(live.model && live.api_base && live.api_key);
 
+  const [recent, setRecent] = useState<
+    { run_id: string; name: string; verdict: string }[]
+  >([]);
+
   useEffect(() => {
     fetch("/api/runs?limit=6")
       .then((r) => (r.ok ? r.json() : []))
       .then((rows) => setRecent(rows))
       .catch(() => setRecent([]));
   }, [result]);
-
-  const [recent, setRecent] = useState<
-    { run_id: string; name: string; verdict: string }[]
-  >([]);
 
   async function loadExample(name: string) {
     const text = await fetch(`/examples/${name}/raw`).then((r) => r.text());
@@ -58,7 +58,7 @@ export default function GatePage() {
       } else {
         setResult(body);
       }
-    } catch (e) {
+    } catch {
       setError(
         "could not reach the gate API. Start it with: .venv/Scripts/python -m uvicorn signalgate.api.app:app --port 8000"
       );

@@ -10,7 +10,7 @@
  */
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
 
 const COUNT = 900;
@@ -73,27 +73,33 @@ const FRAG = /* glsl */ `
   }
 `;
 
+function createStaticFieldData() {
+  const positions = new Float32Array(COUNT * 3);
+  const seeds = new Float32Array(COUNT);
+  let i = 0;
+  for (let x = 0; x < 30; x++) {
+    for (let z = 0; z < 30; z++) {
+      const gx = (x / 29 - 0.5) * FIELD;
+      const gz = (z / 29 - 0.5) * FIELD;
+      const r1 = Math.abs(Math.sin(x * 12.9898 + z * 78.233)) % 1;
+      const r2 = Math.abs(Math.cos(x * 39.346 + z * 11.135)) % 1;
+      const r3 = Math.abs(Math.sin(x * 93.989 + z * 67.345)) % 1;
+      positions[i * 3] = gx + (r1 - 0.5) * 0.35;
+      positions[i * 3 + 1] = (r2 - 0.5) * 2.6;
+      positions[i * 3 + 2] = gz + (r3 - 0.5) * 0.35;
+      seeds[i] = r1;
+      i++;
+    }
+  }
+  return { positions, seeds };
+}
+
+const STATIC_FIELD_DATA = createStaticFieldData();
+
 function Field() {
   const ref = useRef<THREE.Points>(null);
   const matRef = useRef<THREE.ShaderMaterial>(null);
-
-  const { positions, seeds } = useMemo(() => {
-    const positions = new Float32Array(COUNT * 3);
-    const seeds = new Float32Array(COUNT);
-    let i = 0;
-    for (let x = 0; x < 30; x++) {
-      for (let z = 0; z < 30; z++) {
-        const gx = (x / 29 - 0.5) * FIELD;
-        const gz = (z / 29 - 0.5) * FIELD;
-        positions[i * 3] = gx + (Math.random() - 0.5) * 0.35;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 2.6;
-        positions[i * 3 + 2] = gz + (Math.random() - 0.5) * 0.35;
-        seeds[i] = Math.random();
-        i++;
-      }
-    }
-    return { positions, seeds };
-  }, []);
+  const { positions, seeds } = STATIC_FIELD_DATA;
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
