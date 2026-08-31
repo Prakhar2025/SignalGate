@@ -13,7 +13,7 @@
 |---|---|---|
 | Language | Python 3.12 | Ecosystem for numerics + agents; micro1-supported |
 | API | FastAPI + uvicorn | Swagger for free; JSON contract testable |
-| UI | Server-rendered Jinja2 + Tailwind + HTMX | Real product feel, **zero node build**, one service, deploys anywhere; deliberately not a single static HTML page and not a heavy SPA |
+| UI | Next.js + React + TailwindCSS | Modern reactive dashboard, interactive evidence bundles, benchmark comparisons, and audit log |
 | CLI | Typer | Pipeline-native usage |
 | Validation | Pydantic v2 | Spec + agent output schemas gated by jsonschema |
 | Numerics | numpy + pandas | Probes |
@@ -43,7 +43,7 @@ Trust boundary: every spec is untrusted input; it enters through schema fencing 
 ```mermaid
 flowchart TB
     subgraph Surfaces["Human surfaces"]
-        WEB["Web Gate<br/>FastAPI + Jinja2/Tailwind/HTMX"]
+        WEB["Web Gate<br/>Next.js + Tailwind UI / FastAPI"]
         CLI["CLI (Typer)"]
     end
     subgraph Core["SignalGate core (one Docker service)"]
