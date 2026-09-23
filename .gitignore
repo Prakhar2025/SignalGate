@@ -33,3 +33,4 @@ Thumbs.db
 # --- Scratch ---
 *.log
 *.tmp
+.txt
