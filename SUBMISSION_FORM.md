@@ -1,5 +1,9 @@
 # Submission form copy (paste into the HackerEarth form)
 
+## Video URL
+
+https://youtu.be/9HV4xWULm1M
+
 ## Title
 
 SignalGate: an agentic research-integrity gate for candidate trading signals

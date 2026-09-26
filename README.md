@@ -1,15 +1,44 @@
-# SignalGate
-
 <p align="center">
-  <img src="docs/assets/banner.png" alt="SignalGate: research teams don't lack signals, they lack gates" width="100%">
+  <img src="docs/assets/banner.svg" alt="SignalGate, research-integrity gate for candidate trading signals" width="820">
 </p>
 
-**research teams don't lack signals, they lack gates. SignalGate sells silence for the research pipeline - spurious signals die with receipts; only signals that deserve a researcher's hour reach a human.**
+<p align="center">
+  <strong>Research teams don't lack signals. They lack gates.</strong><br>
+  Screens every candidate signal a quant desk receives - LLM idea generators, vendors, papers -<br>
+  investigates it like a fraud case with four statistical probes, and hands back a verdict with receipts.<br>
+  Spurious signals die with evidence; only signals that deserve an hour reach a researcher.
+</p>
 
-SignalGate is an agentic research-integrity gate: candidate trading signals are investigated like fraud cases - statistical probes as tools, verdicts with receipts, silence unless a signal deserves a researcher's hour.
+<p align="center">
+  <img alt="CI" src="https://github.com/Prakhar2025/SignalGate/actions/workflows/ci.yml/badge.svg">
+  <img alt="Python" src="https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white">
+  <img alt="Probes" src="https://img.shields.io/badge/verification-4%20probes-34d399">
+  <img alt="Console" src="https://img.shields.io/badge/gate-Next.js%2016-000000?logo=nextdotjs&logoColor=white">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-4cc38a">
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/9HV4xWULm1M"><img alt="Demo video" src="https://img.shields.io/badge/%E2%96%B6%20demo%20video-watch-FF0000?logo=youtube&logoColor=white"></a>
+  <a href="https://signal-gate-git-main-prakhar-shuklas-projects-a9765254.vercel.app"><img alt="Live gate" src="https://img.shields.io/badge/live%20gate-open-4cc38a"></a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/9HV4xWULm1M"><strong>Demo video</strong></a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://signal-gate-git-main-prakhar-shuklas-projects-a9765254.vercel.app"><strong>Live gate</strong></a>
+  &nbsp;&middot;&nbsp;
+  <a href="docs/blog/engineering-deep-dive.md">Engineering deep dive</a>
+  &nbsp;&middot;&nbsp;
+  <a href="docs/README.md">Design docs</a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/9HV4xWULm1M"><img src="https://img.youtube.com/vi/9HV4xWULm1M/maxresdefault.jpg" alt="Watch the SignalGate demo" width="620"></a>
+</p>
 
 > Disclosure (micro1 ground rule 02): design informed by the builder's prior fraud-defense work (Gatehouse: recommend-never-act, evidence bundles, honest eval discipline). Zero code imported. Repo is MIT.
 
+---
 ## Who has this problem
 
 **Junior quant researchers and quant PMs at prop shops and hedge funds, and the risk officers who must audit vendor signals.** Their pipeline receives dozens of candidate signals a week from LLM idea generators, vendor feeds, and papers.
